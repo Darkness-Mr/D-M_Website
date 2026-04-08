@@ -4,10 +4,11 @@
    TÉRMINOS Y CONDICIONES
    ========================================================================== */
 .terminos-main {
-    background-color: white;
+    background-color: var(--color-surface-alt);
     padding: 50px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #dce9fa;
 }
 
 .terminos-contenido h3 {

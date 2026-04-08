@@ -23,7 +23,7 @@
     height: 500px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    background-color: var(--color-secondary);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
     font-size: 1.2rem;
 }
 
@@ -51,10 +51,11 @@
 
 /* Estilos del formulario */
 .form-personalizacion {
-    background-color: white;
+    background-color: var(--color-surface-alt);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #dce9fa;
 }
 
 .form-group {
@@ -77,7 +78,7 @@
     font-family: var(--font-text);
     font-size: 1rem;
     color: var(--color-text-main);
-    background-color: #fafafa;
+    background-color: white;
     transition: border-color 0.3s;
 }
 

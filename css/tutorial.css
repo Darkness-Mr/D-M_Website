@@ -24,10 +24,11 @@
 .step-card {
     display: flex;
     gap: 25px;
-    background-color: white;
+    background-color: var(--color-surface-alt);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    border: 1px solid #dce9fa;
     align-items: flex-start;
 }
 
@@ -44,7 +45,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(229, 152, 155, 0.4);
+    box-shadow: 0 4px 10px rgba(126, 167, 217, 0.35);
 }
 
 .step-content {
@@ -67,7 +68,7 @@
 .step-image-placeholder {
     width: 100%;
     height: 200px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-surface-alt);
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -75,7 +76,7 @@
     color: var(--color-text-main);
     font-style: italic;
     font-size: 0.9rem;
-    border: 2px dashed #d1bfae;
+    border: 2px dashed #bfd4ef;
 }
 
 /* ==========================================================================

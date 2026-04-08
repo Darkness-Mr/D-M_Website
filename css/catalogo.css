@@ -26,10 +26,11 @@
    BARRA LATERAL DE FILTROS
    ========================================================================== */
 .filtros-sidebar {
-    background-color: white;
+    background-color: var(--color-surface-alt);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #dce9fa;
     position: sticky;
     top: 90px; /* Para que baje acompañando la pantalla si hay muchos productos */
 }

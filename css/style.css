@@ -4,13 +4,15 @@
    VARIABLES GLOBALES Y RESETEO
    ========================================================================== */
 :root {
-    /* Paleta de Colores Pasteles */
-    --color-primary: #F4C2C2; /* Rosa pastel romántico */
-    --color-secondary: #E8D8C8; /* Tono crema/artesanal */
-    --color-accent: #E5989B; /* Rosa un poco más oscuro para botones/hover */
-    --color-background: #FFFAF9; /* Blanco crema muy suave para el fondo */
-    --color-text-main: #4A4A4A; /* Gris oscuro para el texto (más suave que el negro) */
-    --color-text-light: #7A7A7A;
+    /* Paleta de colores pasteles (equilibrio entre rosado y azul) */
+    --color-primary: #f7d7df; /* Rosa pastel romántico */
+    --color-secondary: #dcecff; /* Azul pastel suave */
+    --color-accent: #7ea7d9; /* Azul para acciones principales */
+    --color-accent-rose: #e6a2ad; /* Rosa de apoyo para detalles */
+    --color-surface-alt: #f3f8ff; /* Superficie clara con tinte azul */
+    --color-background: #fffafb; /* Fondo cálido muy suave */
+    --color-text-main: #4a4a4a; /* Gris oscuro para texto principal */
+    --color-text-light: #7a7a7a;
     --color-whatsapp: #25D366;
 
     /* Fuentes */
@@ -53,19 +55,20 @@ ul {
     padding: 10px 24px;
     border-radius: 25px;
     font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
 .btn-primary {
-    background-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-rose) 100%);
     color: white;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #d6878a;
+    background: linear-gradient(135deg, var(--color-accent-rose) 0%, var(--color-accent) 100%);
     transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(126, 167, 217, 0.28);
 }
 
 .btn-secondary {
@@ -92,12 +95,27 @@ ul {
     margin-bottom: 40px;
 }
 
+/* Utilidades de marca para mantener una jerarquía tipográfica consistente en D&M */
+.brand {
+    white-space: nowrap;
+}
+
+.brand-amp {
+    display: inline-block;
+    font-size: 0.5em;
+    line-height: 1;
+    vertical-align: 0.25em;
+    margin: 0 0.03em;
+    color: var(--color-accent-rose);
+}
+
 /* ==========================================================================
    HEADER Y NAVEGACIÓN
    ========================================================================== */
 .header {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    backdrop-filter: blur(6px);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -115,6 +133,7 @@ ul {
 .logo h1 {
     font-size: 2rem;
     color: var(--color-accent);
+    letter-spacing: 0.02em;
 }
 
 .nav-links {
@@ -158,7 +177,7 @@ ul {
    FOOTER (Pie de página)
    ========================================================================== */
 .footer {
-    background-color: var(--color-secondary);
+    background: linear-gradient(135deg, #e8f3ff 0%, #fcebf0 100%);
     padding: 40px 20px 20px;
     margin-top: 60px;
 }
@@ -204,7 +223,7 @@ ul {
 }
 
 .social-icons a:hover {
-    color: white;
+    color: var(--color-accent);
 }
 
 .footer-bottom {

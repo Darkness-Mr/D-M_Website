@@ -63,10 +63,10 @@
    CHECKOUT Y FORMULARIO
    ========================================================================== */
 .carrito-checkout {
-    background-color: #fafafa;
+    background-color: var(--color-surface-alt);
     border-radius: 15px;
     padding: 30px;
-    border: 1px solid #eee;
+    border: 1px solid #dce9fa;
 }
 
 .carrito-checkout h3 {
@@ -77,8 +77,9 @@
 }
 
 .alerta-envio {
-    background-color: var(--color-primary);
-    color: white;
+    background-color: var(--color-secondary);
+    color: #355070;
+    border: 1px solid #c7ddf8;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 25px;
@@ -195,6 +196,7 @@
 #checkout-form input:focus {
     outline: none;
     border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(126, 167, 217, 0.2);
 }
 
 /* Métodos de Pago */

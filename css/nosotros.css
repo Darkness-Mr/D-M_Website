@@ -42,7 +42,7 @@
 .historia-imagen .product-image-placeholder {
     width: 100%;
     border-radius: 20px;
-    background-color: var(--color-secondary);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #eef5ff 100%);
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 

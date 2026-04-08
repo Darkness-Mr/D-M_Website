@@ -1,1 +1,41 @@
 /*(Específico para el formato de texto legal)*/
+
+/* ==========================================================================
+   TÉRMINOS Y CONDICIONES
+   ========================================================================== */
+.terminos-main {
+    background-color: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.terminos-contenido h3 {
+    font-family: var(--font-text);
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.terminos-contenido h3:first-child {
+    margin-top: 20px;
+}
+
+.terminos-contenido p {
+    color: var(--color-text-main);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.terminos-contenido strong {
+    font-weight: 600;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .terminos-main {
+        padding: 30px 20px;
+    }
+}

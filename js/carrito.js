@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Textos adicionales si personalizó el pedido
             let extras = `Color de caja: ${item.colorCaja}`;
             if (item.chocolates) extras += ' | Extra: Chocolates incluidos';
+            if (item.dedicatoria) extras += ` | Dedicatoria: "${item.dedicatoria}"`;
 
             // Crear el HTML de cada item
             const itemHTML = `

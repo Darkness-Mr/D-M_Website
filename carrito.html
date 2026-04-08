@@ -66,9 +66,19 @@
                     <label class="campo-label" for="telefono-cliente">Teléfono / WhatsApp</label>
                     <input id="telefono-cliente" name="telefono" type="tel" placeholder="Ejemplo: 999 999 999" required>
 
-                    <label class="campo-label" for="direccion-cliente">Dirección exacta en Ate</label>
-                    <input id="direccion-cliente" name="direccion" type="text" placeholder="Av./Calle, referencia y zona" required>
-                    <p class="campo-ayuda">El costo del motorizado no está incluido en el precio del ramo y se calcula según tu ubicación desde Santa Clara.</p>
+                    <label class="campo-label" for="direccion-cliente">Dirección de entrega (detalle)</label>
+                    <input id="direccion-cliente" name="direccion" type="text" placeholder="Av./Calle, número, referencia y zona" required>
+                    <p class="campo-ayuda">Escribe detalles de puerta, interior, piso o referencia para facilitar la entrega.</p>
+
+                    <label class="campo-label" for="ubicacion-maps">Ubicación exacta en Google Maps</label>
+                    <div class="maps-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Santa+Clara+Ate+Lima" class="btn-secondary btn-maps" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-map-location-dot"></i> Abrir Google Maps
+                        </a>
+                    </div>
+                    <input id="ubicacion-maps" name="ubicacionMaps" type="url" placeholder="Pega aquí el enlace de tu ubicación en Google Maps" required>
+                    <p class="campo-ayuda">En Google Maps: busca tu ubicación, toca "Compartir" y pega aquí el enlace.</p>
+                    <p class="campo-ayuda estado-ubicacion" id="estado-ubicacion">Aún no tenemos una ubicación válida para estimar el motorizado.</p>
 
                     <label class="campo-label" for="fecha-entrega">Fecha de entrega</label>
                     <input id="fecha-entrega" name="fechaEntrega" type="date" title="Fecha en la que deseas recibir el pedido" required>

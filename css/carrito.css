@@ -95,7 +95,8 @@
 
 #checkout-form input[type="text"],
 #checkout-form input[type="tel"],
-#checkout-form input[type="date"] {
+#checkout-form input[type="date"],
+#checkout-form input[type="url"] {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
@@ -134,6 +135,42 @@
     padding: 10px 12px;
     margin-top: 0;
     margin-bottom: 18px;
+}
+
+.maps-actions {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.btn-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.estado-ubicacion {
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    background-color: #fff7e8;
+    border: 1px dashed #f3d39b;
+    color: #8f6229;
+}
+
+.estado-ubicacion--ok {
+    background-color: #edf8ef;
+    border: 1px dashed #8ac79a;
+    color: #1f6a34;
+}
+
+.estado-ubicacion--warning {
+    background-color: #fff7e8;
+    border: 1px dashed #f3d39b;
+    color: #8f6229;
 }
 
 .resumen-costos {
@@ -205,5 +242,14 @@
 @media (max-width: 900px) {
     .carrito-container {
         grid-template-columns: 1fr;
+    }
+
+    .maps-actions {
+        width: 100%;
+    }
+
+    .btn-maps {
+        width: 100%;
+        justify-content: center;
     }
 }

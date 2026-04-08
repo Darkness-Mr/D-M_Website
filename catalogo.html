@@ -13,13 +13,9 @@
 
     <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/catalogo.css"> </head>
 <body>
-
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo">
-                <h1>D&M Detalles</h1>
-            </a>
-
+            <a href="index.html" class="logo"><h1>D&M Detalles</h1></a>
             <nav class="navbar">
                 <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
@@ -27,17 +23,16 @@
                     <li><a href="nosotros.html">Nuestra Historia</a></li>
                 </ul>
             </nav>
-
             <div class="cart-icon">
-                <a href="carrito.html">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-counter" id="cart-counter">0</span>
-                </a>
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-counter" id="cart-counter">0</span></a>
             </div>
         </div>
     </header>
 
     <main class="catalogo-main">
+        <a href="index.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver al inicio
+        </a>
         
         <div class="catalogo-header">
             <h2 class="section-title">Nuestro Catálogo</h2>
@@ -45,86 +40,61 @@
         </div>
 
         <div class="catalogo-container">
-            
             <aside class="filtros-sidebar">
                 <h3>Filtrar por Precio</h3>
                 <div class="filtro-opciones">
-                    <label class="filtro-label">
-                        <input type="radio" name="precio" value="todos" checked>
-                        <span>Todos los precios</span>
-                    </label>
-                    <label class="filtro-label">
-                        <input type="radio" name="precio" value="economico">
-                        <span>Menos de S/ 50.00</span>
-                    </label>
-                    <label class="filtro-label">
-                        <input type="radio" name="precio" value="medio">
-                        <span>S/ 50.00 - S/ 100.00</span>
-                    </label>
-                    <label class="filtro-label">
-                        <input type="radio" name="precio" value="premium">
-                        <span>Más de S/ 100.00</span>
-                    </label>
+                    <label class="filtro-label"><input type="radio" name="precio" value="todos" checked><span>Todos los precios</span></label>
+                    <label class="filtro-label"><input type="radio" name="precio" value="economico"><span>Menos de S/ 50.00</span></label>
+                    <label class="filtro-label"><input type="radio" name="precio" value="medio"><span>S/ 50.00 - S/ 100.00</span></label>
+                    <label class="filtro-label"><input type="radio" name="precio" value="premium"><span>Más de S/ 100.00</span></label>
                 </div>
             </aside>
 
             <section class="productos-grid" id="productos-grid">
-                
                 <article class="product-card item-producto" data-precio="45">
-                    <div class="product-image-placeholder">
-                        <span>Ref: Arreglo Básico</span>
-                    </div>
+                    <div class="product-image-placeholder"><span>Ref: Arreglo Básico</span></div>
                     <div class="product-info">
                         <h3>Cajita Romántica Mini</h3>
                         <p class="precio">S/ 45.00</p>
-                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                        <a href="producto.html?id=1" class="btn-primary">Personalizar y Comprar</a>
                     </div>
                 </article>
 
                 <article class="product-card item-producto" data-precio="85">
-                    <div class="product-image-placeholder">
-                        <span>Ref: Arreglo Mediano</span>
-                    </div>
+                    <div class="product-image-placeholder"><span>Ref: Arreglo Mediano</span></div>
                     <div class="product-info">
                         <h3>Caja Clásica con Rosas</h3>
                         <p class="precio">S/ 85.00</p>
-                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                        <a href="producto.html?id=2" class="btn-primary">Personalizar y Comprar</a>
                     </div>
                 </article>
 
                 <article class="product-card item-producto" data-precio="95">
-                    <div class="product-image-placeholder">
-                        <span>Ref: Ramo Eterno</span>
-                    </div>
+                    <div class="product-image-placeholder"><span>Ref: Ramo Eterno</span></div>
                     <div class="product-info">
                         <h3>Ramo de Flores Eternas</h3>
                         <p class="precio">S/ 95.00</p>
-                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                        <a href="producto.html?id=3" class="btn-primary">Personalizar y Comprar</a>
                     </div>
                 </article>
 
                 <article class="product-card item-producto" data-precio="150">
-                    <div class="product-image-placeholder">
-                        <span>Ref: Arreglo Grande</span>
-                    </div>
+                    <div class="product-image-placeholder"><span>Ref: Arreglo Grande</span></div>
                     <div class="product-info">
                         <h3>Corazón Premium + Chocolates</h3>
                         <p class="precio">S/ 150.00</p>
-                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                        <a href="producto.html?id=4" class="btn-primary">Personalizar y Comprar</a>
                     </div>
                 </article>
 
                 <article class="product-card item-producto" data-precio="120">
-                    <div class="product-image-placeholder">
-                        <span>Ref: Cúpula Cristal</span>
-                    </div>
+                    <div class="product-image-placeholder"><span>Ref: Cúpula Cristal</span></div>
                     <div class="product-info">
-                        <h3>Rosa en Cúpula (Estilo Bella y la Bestia)</h3>
+                        <h3>Rosa en Cúpula</h3>
                         <p class="precio">S/ 120.00</p>
-                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                        <a href="producto.html?id=5" class="btn-primary">Personalizar y Comprar</a>
                     </div>
                 </article>
-
             </section>
         </div>
     </main>

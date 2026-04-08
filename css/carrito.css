@@ -1,1 +1,160 @@
 /*(Específico para el resumen y formulario de pago)*/
+
+/* ==========================================================================
+   ESTRUCTURA DEL CARRITO
+   ========================================================================== */
+.carrito-main {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.carrito-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* Lista de items más ancha que el checkout */
+    gap: 40px;
+    margin-top: 30px;
+    align-items: start;
+}
+
+/* ==========================================================================
+   LISTA DE PRODUCTOS AÑADIDOS
+   ========================================================================== */
+.carrito-items {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.item-carrito:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.item-info h4 {
+    font-size: 1.2rem;
+    color: var(--color-text-main);
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.item-precio {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   CHECKOUT Y FORMULARIO
+   ========================================================================== */
+.carrito-checkout {
+    background-color: #fafafa;
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid #eee;
+}
+
+.carrito-checkout h3 {
+    font-family: var(--font-text);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--color-text-main);
+}
+
+.alerta-envio {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    align-items: flex-start;
+}
+
+.alerta-envio i {
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+#checkout-form input[type="text"],
+#checkout-form input[type="tel"],
+#checkout-form input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-text);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#checkout-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* Métodos de Pago */
+.metodos-pago {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.pago-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.pago-label:hover {
+    border-color: var(--color-accent);
+}
+
+.pago-label input[type="radio"] {
+    accent-color: var(--color-accent);
+    width: 18px;
+    height: 18px;
+}
+
+.total-compra {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #ddd;
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+    .carrito-container {
+        grid-template-columns: 1fr;
+    }
+}

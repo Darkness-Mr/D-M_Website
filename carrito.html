@@ -14,27 +14,43 @@
     <link rel="stylesheet" href="css/carrito.css">
 </head>
 <body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <h1>D&M Detalles</h1>
+            </a>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nuestra Historia</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="carrito.html" class="active">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-counter" id="cart-counter">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
     <main class="carrito-main">
         <a href="catalogo.html" class="btn-back">
             <i class="fa-solid fa-arrow-left-long"></i> Seguir comprando
         </a>
 
-        <h2 class="section-title">Resumen de tu Compra</h2>
+        <div class="carrito-header-actions" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
+            <h2 class="section-title" style="margin-bottom: 0;">Resumen de tu Compra</h2>
+            <a href="tutorial.html" class="btn-secondary" style="margin-top: 10px;">
+                <i class="fa-solid fa-circle-question"></i> ¿Cómo comprar?
+            </a>
+        </div>
         
         <div class="carrito-container">
             <div class="carrito-items" id="carrito-items">
-        <h2 class="section-title">Resumen de tu Compra</h2>
-        
-        <div class="carrito-container">
-            <div class="carrito-items" id="carrito-items">
-                <div class="item-carrito">
-                    <div class="item-info">
-                        <h4>Caja Romántica Clásica</h4>
-                        <p>Caja: Rosa Pastel | Extra: Chocolates</p>
-                    </div>
-                    <div class="item-precio">S/ 100.00</div>
                 </div>
-            </div>
 
             <div class="carrito-checkout">
                 <h3>Datos de Envío</h3>
@@ -63,7 +79,7 @@
 
                     <div class="total-compra">
                         <span>Total a Pagar:</span>
-                        <span id="total-precio">S/ 100.00</span>
+                        <span id="total-precio">S/ 0.00</span>
                     </div>
 
                     <button type="submit" class="btn-primary btn-block">Confirmar Pedido por WhatsApp</button>

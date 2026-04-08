@@ -255,3 +255,26 @@ ul {
         font-size: 25px;
     }
 }
+
+/* ==========================================================================
+   BOTÓN DE RETROCESO (BACK BUTTON)
+   ========================================================================== */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-text);
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+    color: var(--color-accent);
+    transform: translateX(-5px); /* Pequeño efecto de moverse a la izquierda */
+}
+
+.btn-back i {
+    font-size: 1.1rem;
+}

@@ -1,1 +1,59 @@
 /*(Específico para el diseño de la historia)*/
+
+/* ==========================================================================
+   SECCIÓN DE HISTORIA ("NOSOTROS")
+   ========================================================================== */
+.nosotros-main {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.historia-section {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.historia-texto {
+    flex: 1;
+}
+
+.historia-texto .section-title {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.historia-texto p {
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.historia-texto strong {
+    color: var(--color-accent);
+}
+
+.historia-imagen {
+    flex: 1;
+}
+
+.historia-imagen .product-image-placeholder {
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--color-secondary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Responsividad */
+@media (max-width: 800px) {
+    .historia-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    .historia-texto .section-title {
+        text-align: center;
+    }
+}

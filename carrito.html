@@ -56,14 +56,24 @@
                 <h3>Datos de Envío</h3>
                 <div class="alerta-envio">
                     <i class="fa-solid fa-circle-info"></i>
-                    <p><strong>Nota importante:</strong> Realizamos envíos a <strong>Ate</strong>. Todos los pedidos requieren <strong>3 días de anticipación</strong>. El costo de envío depende del motorizado y se calculará por interno.</p>
+                    <p><strong>Nota importante:</strong> Realizamos envíos a <strong>Ate</strong>. La entrega mínima es de <strong>2 días después del pedido</strong>. El costo del motorizado no está incluido en el ramo y se calcula según la ubicación exacta.</p>
                 </div>
 
                 <form id="checkout-form">
-                    <input type="text" placeholder="Nombre completo" required>
-                    <input type="tel" placeholder="Teléfono / WhatsApp" required>
-                    <input type="text" placeholder="Dirección exacta en Ate" required>
-                    <input type="date" title="Fecha de entrega" required>
+                    <label class="campo-label" for="nombre-cliente">Nombre completo</label>
+                    <input id="nombre-cliente" name="nombre" type="text" placeholder="Ejemplo: Marizela Huamani" required>
+
+                    <label class="campo-label" for="telefono-cliente">Teléfono / WhatsApp</label>
+                    <input id="telefono-cliente" name="telefono" type="tel" placeholder="Ejemplo: 999 999 999" required>
+
+                    <label class="campo-label" for="direccion-cliente">Dirección exacta en Ate</label>
+                    <input id="direccion-cliente" name="direccion" type="text" placeholder="Av./Calle, referencia y zona" required>
+                    <p class="campo-ayuda">El costo del motorizado no está incluido en el precio del ramo y se calcula según tu ubicación desde Santa Clara.</p>
+
+                    <label class="campo-label" for="fecha-entrega">Fecha de entrega</label>
+                    <input id="fecha-entrega" name="fechaEntrega" type="date" title="Fecha en la que deseas recibir el pedido" required>
+                    <p class="campo-ayuda"><strong>Importante:</strong> La fecha de entrega es el día en que deseas recibir el pedido. El calendario bloquea hoy, mañana y fechas pasadas.</p>
+                    <p class="campo-ayuda campo-ayuda--especial">¿Necesitas entrega el mismo día? En casos especiales se puede coordinar por WhatsApp con recargo adicional.</p>
 
                     <h3>Método de Pago</h3>
                     <div class="metodos-pago">
@@ -77,8 +87,19 @@
                         </label>
                     </div>
 
+                    <div class="resumen-costos">
+                        <div class="resumen-linea">
+                            <span>Subtotal de productos:</span>
+                            <span id="subtotal-precio">S/ 0.00</span>
+                        </div>
+                        <div class="resumen-linea">
+                            <span>Motorizado estimado:</span>
+                            <span id="envio-precio">S/ 0.00</span>
+                        </div>
+                    </div>
+
                     <div class="total-compra">
-                        <span>Total a Pagar:</span>
+                        <span>Total estimado:</span>
                         <span id="total-precio">S/ 0.00</span>
                     </div>
 

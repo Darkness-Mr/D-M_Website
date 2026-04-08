@@ -1,0 +1,1 @@
+/*(General: botón de WhatsApp global, menú de navegación, lógica del carrito en localStorage)*/

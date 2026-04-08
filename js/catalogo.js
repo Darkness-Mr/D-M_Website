@@ -1,0 +1,1 @@
+/*(Específico para hacer funcionar el filtro por precios)*/

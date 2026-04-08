@@ -1,0 +1,1 @@
+/*(Específico para el flujo de pago, calcular envío a Ate y validar datos)*/

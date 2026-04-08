@@ -1,1 +1,112 @@
 /*(Específico para la grilla y el filtro de precios)*/
+
+/* ==========================================================================
+   ESTRUCTURA PRINCIPAL DEL CATÁLOGO
+   ========================================================================== */
+.catalogo-main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.catalogo-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Layout con CSS Grid: Menú de filtros a la izquierda, productos a la derecha */
+.catalogo-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* ==========================================================================
+   BARRA LATERAL DE FILTROS
+   ========================================================================== */
+.filtros-sidebar {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 90px; /* Para que baje acompañando la pantalla si hay muchos productos */
+}
+
+.filtros-sidebar h3 {
+    font-family: var(--font-text);
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+}
+
+.filtro-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filtro-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    transition: color 0.3s ease;
+}
+
+.filtro-label:hover {
+    color: var(--color-accent);
+}
+
+/* Estilizando el input radio para que se vea más acorde a la marca */
+.filtro-label input[type="radio"] {
+    accent-color: var(--color-accent);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   GRILLA DE PRODUCTOS Y TARJETAS
+   ========================================================================== */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-info .precio {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: 15px;
+}
+
+/* Ocultar productos cuando son filtrados por JS */
+.item-producto.oculto {
+    display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDAD (Móviles y Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .catalogo-container {
+        grid-template-columns: 1fr; /* Los filtros pasan arriba de los productos */
+    }
+
+    .filtros-sidebar {
+        position: static; /* Quitamos el sticky en móviles */
+        margin-bottom: 20px;
+    }
+
+    .filtro-opciones {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza tu Arreglo | D&M Detalles</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo"><h1>D&M Detalles</h1></a>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html" class="active">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nuestra Historia</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-counter">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="producto-main">
+        <div class="producto-container">
+            <div class="producto-galeria">
+                <div class="product-image-placeholder grande">
+                    <span>Imagen Principal del Arreglo</span>
+                </div>
+            </div>
+
+            <div class="producto-detalles">
+                <h2 class="producto-titulo">Caja Romántica Clásica</h2>
+                <p class="producto-precio" id="precio-final">S/ 85.00</p>
+                <p class="producto-descripcion">Hermoso arreglo de flores eternas hechas a mano, perfecto para demostrar tu cariño. Incluye caja cilíndrica de alta calidad.</p>
+
+                <form id="form-personalizacion" class="form-personalizacion">
+                    <div class="form-group">
+                        <label for="color-caja">Color de la Caja:</label>
+                        <select id="color-caja" name="color-caja">
+                            <option value="blanco">Blanco Elegante</option>
+                            <option value="negro">Negro Clásico</option>
+                            <option value="rosa">Rosa Pastel</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="add-chocolates" value="15"> 
+                            Añadir Chocolates Ferrero Rocher (+ S/ 15.00)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dedicatoria">Mensaje para la tarjeta (Opcional):</label>
+                        <textarea id="dedicatoria" name="dedicatoria" rows="3" placeholder="Escribe aquí tu mensaje especial..."></textarea>
+                    </div>
+
+                    <button type="button" class="btn-primary btn-block" id="btn-agregar-carrito">Añadir al Carrito</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/producto.js"></script>
+</body>
+</html>

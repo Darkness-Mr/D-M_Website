@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const ubicacionMapsInput = document.getElementById('ubicacion-maps');
     const estadoUbicacionElement = document.getElementById('estado-ubicacion');
     const fechaEntregaInput = document.getElementById('fecha-entrega');
-    const coordenadasSantaClara = { lat: -12.0149, lng: -76.9007 };
+    const coordenadasOrigenMotorizado = { lat: -12.024136, lng: -76.882107 };
 
     let subtotalProductos = 0;
     let costoMotorizado = 0;
     let detalleUbicacionSeleccionada = null;
+    let temporizadorProcesamientoUbicacion = null;
+    let secuenciaProcesamientoUbicacion = 0;
 
     function formatearFechaISO(fecha) {
         const anio = fecha.getFullYear();
@@ -40,6 +42,52 @@ document.addEventListener('DOMContentLoaded', () => {
         fechaEntregaInput.min = formatearFechaISO(fechaMinimaEntrega);
     }
 
+    function obtenerURLValida(textoURL) {
+        const valor = (textoURL || '').trim();
+        if (!valor) return null;
+
+        try {
+            return new URL(valor);
+        } catch (error) {
+            if (!valor.startsWith('www.')) {
+                return null;
+            }
+
+            try {
+                return new URL(`https://${valor}`);
+            } catch (errorURL) {
+                return null;
+            }
+        }
+    }
+
+    function esEnlaceCortoGoogleMaps(url) {
+        if (!url) return false;
+        const host = url.hostname.toLowerCase();
+        return host === 'maps.app.goo.gl' || (host === 'goo.gl' && url.pathname.startsWith('/maps'));
+    }
+
+    function extraerPrimerEnlace(texto) {
+        if (!texto) return null;
+        const coincidencia = texto.match(/https?:\/\/[^\s<>"]+/i);
+        return coincidencia ? coincidencia[0].trim() : null;
+    }
+
+    async function expandirEnlaceCortoGoogleMaps(enlaceCorto) {
+        const endpointExpansion = `https://unshorten.me/s/${encodeURI(enlaceCorto)}`;
+        const respuesta = await fetch(endpointExpansion, {
+            method: 'GET',
+            cache: 'no-store'
+        });
+
+        if (!respuesta.ok) {
+            throw new Error('No se pudo expandir el enlace corto de Google Maps.');
+        }
+
+        const contenidoRespuesta = (await respuesta.text()).trim();
+        return extraerPrimerEnlace(contenidoRespuesta) || contenidoRespuesta;
+    }
+
     function esCoordenadaValida(latitud, longitud) {
         return Number.isFinite(latitud) && Number.isFinite(longitud)
             && latitud >= -90 && latitud <= 90
@@ -56,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             textoDecodificado = texto;
         }
 
-        const coincidencia = textoDecodificado.match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);
+        const coincidencia = textoDecodificado.match(/([+-]?\d+(?:\.\d+)?)\s*,\s*\+?([+-]?\d+(?:\.\d+)?)/);
         if (!coincidencia) return null;
 
         const latitud = Number.parseFloat(coincidencia[1]);
@@ -123,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        return null;
+        return extraerCoordenadasDesdeTexto(enlaceDecodificado);
     }
 
     function convertirARadianes(valor) {
@@ -168,10 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
         estadoUbicacionElement.classList.add('estado-ubicacion--warning');
     }
 
-    function procesarUbicacionMaps() {
+    async function procesarUbicacionMaps() {
         if (!ubicacionMapsInput) return;
 
         const enlaceMaps = ubicacionMapsInput.value.trim();
+        const secuenciaActual = ++secuenciaProcesamientoUbicacion;
 
         if (!enlaceMaps) {
             detalleUbicacionSeleccionada = null;
@@ -182,7 +231,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const coordenadas = extraerCoordenadasDesdeMaps(enlaceMaps);
+        const urlIngresada = obtenerURLValida(enlaceMaps);
+        if (!urlIngresada) {
+            detalleUbicacionSeleccionada = null;
+            costoMotorizado = 0;
+            ubicacionMapsInput.setCustomValidity('Ingresa un enlace valido de Google Maps.');
+            actualizarEstadoUbicacion('El enlace no es valido. Copia y pega nuevamente el enlace de ubicacion desde Google Maps.', 'warning');
+            actualizarTotales();
+            return;
+        }
+
+        let enlaceAProcesar = enlaceMaps;
+
+        if (esEnlaceCortoGoogleMaps(urlIngresada)) {
+            actualizarEstadoUbicacion('Detectamos un enlace corto. Estamos obteniendo la ubicacion exacta...', 'warning');
+
+            try {
+                enlaceAProcesar = await expandirEnlaceCortoGoogleMaps(enlaceMaps);
+            } catch (error) {
+                if (secuenciaActual !== secuenciaProcesamientoUbicacion) {
+                    return;
+                }
+
+                detalleUbicacionSeleccionada = null;
+                costoMotorizado = 0;
+                ubicacionMapsInput.setCustomValidity('No pudimos abrir el enlace corto de Google Maps.');
+                actualizarEstadoUbicacion('No se pudo abrir el enlace corto. Abre ese enlace en una pestaña, copia la URL completa final y pegala aqui.', 'warning');
+                actualizarTotales();
+                return;
+            }
+        }
+
+        const coordenadas = extraerCoordenadasDesdeMaps(enlaceAProcesar);
+
+        if (secuenciaActual !== secuenciaProcesamientoUbicacion) {
+            return;
+        }
 
         if (!coordenadas) {
             detalleUbicacionSeleccionada = null;
@@ -194,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         ubicacionMapsInput.setCustomValidity('');
-        const distanciaKm = calcularDistanciaEnKm(coordenadasSantaClara, coordenadas);
+        const distanciaKm = calcularDistanciaEnKm(coordenadasOrigenMotorizado, coordenadas);
         costoMotorizado = calcularCostoMotorizadoPorDistancia(distanciaKm);
         detalleUbicacionSeleccionada = {
             enlace: enlaceMaps,
@@ -204,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         actualizarEstadoUbicacion(
-            `Ubicacion detectada: ${distanciaKm.toFixed(1)} km desde Santa Clara. Motorizado estimado: S/ ${costoMotorizado.toFixed(2)}.`,
+            `Ubicacion detectada: ${distanciaKm.toFixed(1)} km desde nuestra base de despacho. Motorizado estimado: S/ ${costoMotorizado.toFixed(2)}.`,
             'ok'
         );
         actualizarTotales();
@@ -291,9 +375,21 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarContadorCarrito(); // Actualizar bolita de arriba
     };
 
+    function programarProcesamientoUbicacion() {
+        if (temporizadorProcesamientoUbicacion) {
+            clearTimeout(temporizadorProcesamientoUbicacion);
+        }
+
+        temporizadorProcesamientoUbicacion = setTimeout(() => {
+            procesarUbicacionMaps();
+        }, 500);
+    }
+
     if (ubicacionMapsInput) {
-        ubicacionMapsInput.addEventListener('input', procesarUbicacionMaps);
-        ubicacionMapsInput.addEventListener('change', procesarUbicacionMaps);
+        ubicacionMapsInput.addEventListener('input', programarProcesamientoUbicacion);
+        ubicacionMapsInput.addEventListener('change', () => {
+            procesarUbicacionMaps();
+        });
     }
 
     if (fechaEntregaInput) {
@@ -308,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarTotales();
 
     // 3. Lógica final: Procesar el pago rápido y enviar WhatsApp
-    formCheckout.addEventListener('submit', (e) => {
+    formCheckout.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evitar que la página se recargue
 
         if (carrito.length === 0) {
@@ -329,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        procesarUbicacionMaps();
+        await procesarUbicacionMaps();
 
         if (!detalleUbicacionSeleccionada) {
             alert('Para calcular el motorizado con precision, pega un enlace valido de Google Maps en tu ubicacion de entrega.');
@@ -342,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Construir el mensaje para WhatsApp
         let mensaje = '*Hola D&M Detalles! Vengo de la web y quiero confirmar un pedido:*\n\n';
-        mensaje += `*DATOS DEL CLIENTE:*\n- Nombre: ${nombre}\n- Teléfono: ${telefono}\n- Dirección (Ate): ${direccion}\n- Ubicación Maps: ${ubicacionMaps}\n- Distancia estimada desde Santa Clara: ${detalleUbicacionSeleccionada.distanciaKm.toFixed(1)} km\n- Fecha de Entrega solicitada: ${fecha}\n- Método de Pago: ${metodoPago.toUpperCase()}\n\n`;
+        mensaje += `*DATOS DEL CLIENTE:*\n- Nombre: ${nombre}\n- Teléfono: ${telefono}\n- Dirección (Ate): ${direccion}\n- Ubicación Maps: ${ubicacionMaps}\n- Distancia estimada desde base de despacho: ${detalleUbicacionSeleccionada.distanciaKm.toFixed(1)} km\n- Fecha de Entrega solicitada: ${fecha}\n- Método de Pago: ${metodoPago.toUpperCase()}\n\n`;
         
         mensaje += '*DETALLE DEL PEDIDO:*\n';
         let totalFinal = 0;
@@ -358,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalConEnvio = totalFinal + costoMotorizado;
 
         mensaje += `\n*Subtotal de productos: S/ ${totalFinal.toFixed(2)}*`;
-        mensaje += `\n*Motorizado estimado (desde Santa Clara): S/ ${costoMotorizado.toFixed(2)}*`;
+        mensaje += `\n*Motorizado estimado (segun distancia): S/ ${costoMotorizado.toFixed(2)}*`;
         mensaje += `\n*Total estimado: S/ ${totalConEnvio.toFixed(2)}*`;
         mensaje += '\n\n*Nota:* En casos especiales se puede evaluar entrega el mismo dia con recargo adicional coordinado por WhatsApp.';
 

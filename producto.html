@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personaliza tu Arreglo | D&M Detalles</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/producto.css">
 </head>
@@ -26,23 +24,27 @@
                 </ul>
             </nav>
             <div class="cart-icon">
-                <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-counter">0</span></a>
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-counter" id="cart-counter">0</span></a>
             </div>
         </div>
     </header>
 
     <main class="producto-main">
+        <a href="catalogo.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver al catálogo
+        </a>
+
         <div class="producto-container">
             <div class="producto-galeria">
                 <div class="product-image-placeholder grande">
-                    <span>Imagen Principal del Arreglo</span>
+                    <span id="prod-img-text">Cargando imagen...</span>
                 </div>
             </div>
 
             <div class="producto-detalles">
-                <h2 class="producto-titulo">Caja Romántica Clásica</h2>
-                <p class="producto-precio" id="precio-final">S/ 85.00</p>
-                <p class="producto-descripcion">Hermoso arreglo de flores eternas hechas a mano, perfecto para demostrar tu cariño. Incluye caja cilíndrica de alta calidad.</p>
+                <h2 class="producto-titulo" id="prod-nombre">Cargando...</h2>
+                <p class="producto-precio" id="precio-final">S/ 0.00</p>
+                <p class="producto-descripcion" id="prod-desc">Cargando detalles...</p>
 
                 <form id="form-personalizacion" class="form-personalizacion">
                     <div class="form-group">

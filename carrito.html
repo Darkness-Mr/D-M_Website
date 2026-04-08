@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito | D&M Detalles</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrito.css">
+</head>
+<body>
+
+    <main class="carrito-main">
+        <h2 class="section-title">Resumen de tu Compra</h2>
+        
+        <div class="carrito-container">
+            <div class="carrito-items" id="carrito-items">
+                <div class="item-carrito">
+                    <div class="item-info">
+                        <h4>Caja Romántica Clásica</h4>
+                        <p>Caja: Rosa Pastel | Extra: Chocolates</p>
+                    </div>
+                    <div class="item-precio">S/ 100.00</div>
+                </div>
+            </div>
+
+            <div class="carrito-checkout">
+                <h3>Datos de Envío</h3>
+                <div class="alerta-envio">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p><strong>Nota importante:</strong> Realizamos envíos a <strong>Ate</strong>. Todos los pedidos requieren <strong>3 días de anticipación</strong>. El costo de envío depende del motorizado y se calculará por interno.</p>
+                </div>
+
+                <form id="checkout-form">
+                    <input type="text" placeholder="Nombre completo" required>
+                    <input type="tel" placeholder="Teléfono / WhatsApp" required>
+                    <input type="text" placeholder="Dirección exacta en Ate" required>
+                    <input type="date" title="Fecha de entrega" required>
+
+                    <h3>Método de Pago</h3>
+                    <div class="metodos-pago">
+                        <label class="pago-label">
+                            <input type="radio" name="pago" value="yape" checked>
+                            <span><i class="fa-solid fa-mobile-screen"></i> Yape / Plin</span>
+                        </label>
+                        <label class="pago-label">
+                            <input type="radio" name="pago" value="tarjeta">
+                            <span><i class="fa-solid fa-credit-card"></i> Tarjeta de Crédito/Débito</span>
+                        </label>
+                    </div>
+
+                    <div class="total-compra">
+                        <span>Total a Pagar:</span>
+                        <span id="total-precio">S/ 100.00</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">Confirmar Pedido por WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

@@ -77,25 +77,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const fecha = inputs[3].value; // Ya tiene validación de HTML5 para fecha
         const metodoPago = document.querySelector('input[name="pago"]:checked').value;
 
-        // Construir el mensaje formateado para WhatsApp (usando %0A para saltos de línea)
-        let mensaje = `*¡Hola D&M Detalles! Vengo de la web y quiero confirmar un pedido:*%0A%0A`;
-        mensaje += `*DATOS DEL CLIENTE:*%0A- Nombre: ${nombre}%0A- Teléfono: ${telefono}%0A- Dirección (Ate): ${direccion}%0A- Fecha de Entrega: ${fecha}%0A- Método de Pago: ${metodoPago.toUpperCase()}%0A%0A`;
+        // Construir el mensaje para WhatsApp
+        let mensaje = '*Hola D&M Detalles! Vengo de la web y quiero confirmar un pedido:*\n\n';
+        mensaje += `*DATOS DEL CLIENTE:*\n- Nombre: ${nombre}\n- Teléfono: ${telefono}\n- Dirección (Ate): ${direccion}\n- Fecha de Entrega: ${fecha}\n- Método de Pago: ${metodoPago.toUpperCase()}\n\n`;
         
-        mensaje += `*DETALLE DEL PEDIDO:*%0A`;
+        mensaje += '*DETALLE DEL PEDIDO:*\n';
         let totalFinal = 0;
         
         carrito.forEach(item => {
-            mensaje += `- ${item.nombre} (S/ ${item.precio.toFixed(2)})%0A`;
-            mensaje += `  Caja: ${item.colorCaja} ${item.chocolates ? '| + Chocolates' : ''}%0A`;
-            mensaje += `  Mensaje tarjeta: "${item.dedicatoria}"%0A`;
+            const dedicatoria = item.dedicatoria ? item.dedicatoria : 'Sin dedicatoria';
+            mensaje += `- ${item.nombre} (S/ ${item.precio.toFixed(2)})\n`;
+            mensaje += `  Caja: ${item.colorCaja} ${item.chocolates ? '| + Chocolates' : ''}\n`;
+            mensaje += `  Mensaje tarjeta: "${dedicatoria}"\n`;
             totalFinal += item.precio;
         });
 
-        mensaje += `%0A*Total de productos (sin contar costo de envío): S/ ${totalFinal.toFixed(2)}*`;
+        mensaje += `\n*Total de productos (sin contar costo de envío): S/ ${totalFinal.toFixed(2)}*`;
 
-        // AQUÍ PONES EL NÚMERO DE TU HERMANA (Ejemplo con código de Perú 51)
-        const numeroWhatsApp = "51XXXXXXXXX"; 
-        const urlAPI = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+        const numeroWhatsApp = '51930906901';
+        const textoCodificado = encodeURIComponent(mensaje);
+        const urlAPI = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
         
         // Limpiar el carrito de la web porque el pedido ya se generó
         localStorage.removeItem('carritoDM');
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarCarrito();
         actualizarContadorCarrito();
 
-        // Abrir WhatsApp en una nueva pestaña
-        window.open(urlAPI, '_blank');
+        // Redirigir al chat de WhatsApp
+        window.location.href = urlAPI;
     });
 });

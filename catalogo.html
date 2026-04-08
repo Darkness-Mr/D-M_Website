@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de arreglos de flores eternas de D&M Detalles. Filtra por precios y encuentra el detalle ideal.">
+    <title>Catálogo | D&M Detalles</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/catalogo.css"> </head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <h1>D&M Detalles</h1>
+            </a>
+
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html" class="active">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nuestra Historia</a></li>
+                </ul>
+            </nav>
+
+            <div class="cart-icon">
+                <a href="carrito.html">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-counter" id="cart-counter">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="catalogo-main">
+        
+        <div class="catalogo-header">
+            <h2 class="section-title">Nuestro Catálogo</h2>
+            <p class="section-description">Encuentra el detalle perfecto para esa persona especial.</p>
+        </div>
+
+        <div class="catalogo-container">
+            
+            <aside class="filtros-sidebar">
+                <h3>Filtrar por Precio</h3>
+                <div class="filtro-opciones">
+                    <label class="filtro-label">
+                        <input type="radio" name="precio" value="todos" checked>
+                        <span>Todos los precios</span>
+                    </label>
+                    <label class="filtro-label">
+                        <input type="radio" name="precio" value="economico">
+                        <span>Menos de S/ 50.00</span>
+                    </label>
+                    <label class="filtro-label">
+                        <input type="radio" name="precio" value="medio">
+                        <span>S/ 50.00 - S/ 100.00</span>
+                    </label>
+                    <label class="filtro-label">
+                        <input type="radio" name="precio" value="premium">
+                        <span>Más de S/ 100.00</span>
+                    </label>
+                </div>
+            </aside>
+
+            <section class="productos-grid" id="productos-grid">
+                
+                <article class="product-card item-producto" data-precio="45">
+                    <div class="product-image-placeholder">
+                        <span>Ref: Arreglo Básico</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cajita Romántica Mini</h3>
+                        <p class="precio">S/ 45.00</p>
+                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                    </div>
+                </article>
+
+                <article class="product-card item-producto" data-precio="85">
+                    <div class="product-image-placeholder">
+                        <span>Ref: Arreglo Mediano</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Caja Clásica con Rosas</h3>
+                        <p class="precio">S/ 85.00</p>
+                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                    </div>
+                </article>
+
+                <article class="product-card item-producto" data-precio="95">
+                    <div class="product-image-placeholder">
+                        <span>Ref: Ramo Eterno</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo de Flores Eternas</h3>
+                        <p class="precio">S/ 95.00</p>
+                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                    </div>
+                </article>
+
+                <article class="product-card item-producto" data-precio="150">
+                    <div class="product-image-placeholder">
+                        <span>Ref: Arreglo Grande</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Corazón Premium + Chocolates</h3>
+                        <p class="precio">S/ 150.00</p>
+                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                    </div>
+                </article>
+
+                <article class="product-card item-producto" data-precio="120">
+                    <div class="product-image-placeholder">
+                        <span>Ref: Cúpula Cristal</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rosa en Cúpula (Estilo Bella y la Bestia)</h3>
+                        <p class="precio">S/ 120.00</p>
+                        <a href="producto.html" class="btn-primary">Personalizar y Comprar</a>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>D&M Detalles</h2>
+                <p>Artesanía y romance en cada flor.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="terminos.html">Términos y Condiciones</a></li>
+                    <li><a href="terminos.html#envios">Políticas de Envío (Ate)</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 D&M Detalles. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/51XXXXXXXXX" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script src="js/catalogo.js"></script> </body>
+</html>

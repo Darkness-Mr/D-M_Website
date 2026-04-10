@@ -130,10 +130,35 @@ ul {
     align-items: center;
 }
 
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(126, 167, 217, 0.35);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
 .logo h1 {
     font-size: 2rem;
     color: var(--color-accent);
     letter-spacing: 0.02em;
+}
+
+.standalone-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--color-accent);
 }
 
 .nav-links {
@@ -265,6 +290,14 @@ ul {
     .header-container {
         flex-direction: column;
         gap: 15px;
+    }
+    .logo-img {
+        width: 46px;
+        height: 46px;
+    }
+    .logo h1,
+    .standalone-logo {
+        font-size: 1.8rem;
     }
     .whatsapp-float {
         bottom: 20px;
